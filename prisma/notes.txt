@@ -1,6 +1,0 @@
-npx prisma generate
-
-npx prisma migrate reset  all the date will be lost and the db will be reset
-
-
-npx prisma db push
