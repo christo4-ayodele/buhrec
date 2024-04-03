@@ -1,4 +1,3 @@
-import { LoginButton } from '@/components/authComponents/login-button';
 import { Button } from '@/components/ui/button';
 import { welcomeText } from '@/constants';
 
@@ -19,14 +18,13 @@ export default function Home() {
               by Professionals.
             </span>
           </p>
-          <LoginButton>
-            <Button
-              variant="outline"
-              className="bg-primary2-500 font-bold hover:bg-primary-500 hover:text-primary-50"
-            >
-              Get Started
-            </Button>
-          </LoginButton>
+
+          <Button
+            variant="outline"
+            className="bg-primary2-500 font-bold hover:bg-primary-500 hover:text-primary-50"
+          >
+            Get Started
+          </Button>
         </div>
       </section>
     </>
