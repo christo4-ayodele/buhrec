@@ -22,24 +22,24 @@ export const headerLinks: CombinedHeaderLink[] = [
     label: 'Help',
     route: '/help',
   },
-  {
-    label: 'Login',
-    route: '/login', // Add a default route for the Login item
-    routes: [
-      {
-        label: 'Student/Researcher',
-        route: '/student-researcher',
-      },
-      {
-        label: 'Admin',
-        route: '/admin',
-      },
-      {
-        label: 'Reviewer',
-        route: '/reviewer',
-      },
-    ],
-  },
+  // {
+  //   label: 'Login',
+  //   route: '/login', // Add a default route for the Login item
+  //   routes: [
+  //     {
+  //       label: 'Student/Researcher',
+  //       route: '/student-researcher',
+  //     },
+  //     {
+  //       label: 'Admin',
+  //       route: '/admin',
+  //     },
+  //     {
+  //       label: 'Reviewer',
+  //       route: '/reviewer',
+  //     },
+  //   ],
+  // },
 ];
 
 export const welcomeText = 'Welcome to BUHREC';
@@ -65,4 +65,10 @@ export const aboutText3 = {
     "Welcome to BUHREC - Babcock University's Research Paper Evaluation Center!",
   subText:
     'At BUHREC, we understand the importance of collaboration and knowledge sharing in advancing scholarly discourse. Through our platform, researchers have the opportunity to receive constructive feedback, engage in meaningful discussions, and refine their work to achieve the highest levels of excellence.',
+};
+
+export const researchDefaultValues = {
+  title: '',
+  program: '',
+  paperUrl: '',
 };

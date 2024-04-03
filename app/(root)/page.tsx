@@ -1,4 +1,4 @@
-import { LoginButton } from '@/components/auth/login-button';
+import { LoginButton } from '@/components/authComponents/login-button';
 import { Button } from '@/components/ui/button';
 import { welcomeText } from '@/constants';
 
@@ -7,7 +7,7 @@ export default function Home() {
     <>
       <section
         id="hero"
-        className="flex w-full h-[600px] flex-col items-center bg-primary-50 bg-cover backdrop-brightness-0 py-5 md:py-10 heroImg"
+        className="flex w-full h-[600px] flex-col items-center py-5 md:py-10 "
       >
         <h1 className=" text-center items-center top-[150px] font-bold text-[60px]">
           {welcomeText}

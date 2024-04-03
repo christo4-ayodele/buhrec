@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+import { withUt } from 'uploadthing/tw';
 
-module.exports = {
+export default withUt({
   darkMode: ['class'],
   content: [
     './pages/**/*.{ts,tsx}',
@@ -9,7 +10,6 @@ module.exports = {
     './src/**/*.{ts,tsx}',
     './sections/**/*.{ts,tsx}',
   ],
-  prefix: '',
   theme: {
     container: {
       center: true,
@@ -35,6 +35,12 @@ module.exports = {
           500: '#af8e2f',
           50: '#F6F8FD',
           DEFAULT: '#1f438d',
+        },
+        grey: {
+          600: '#545454', // Subdued - color name in figma
+          500: '#757575',
+          400: '#AFAFAF', // Disabled - color name in figma
+          50: '#F6F6F6', // White Grey - color name in figma
         },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
@@ -90,4 +96,4 @@ module.exports = {
     },
   },
   plugins: [require('tailwindcss-animate')],
-};
+});
