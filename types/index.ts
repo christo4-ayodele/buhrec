@@ -1,9 +1,9 @@
 export type CreateUserParams = {
   clerkId: string;
+  email: string;
+  username: string;
   firstName: string;
   lastName: string;
-  username: string;
-  email: string;
   photo: string;
 };
 
