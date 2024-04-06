@@ -30,22 +30,64 @@ import { z } from 'zod';
 import { researchDefaultValues } from '@/constants';
 import { useState } from 'react';
 import { FileUploader } from './FileUploader';
+import { useUploadThing } from '@/lib/uploadthing';
+import { useRouter } from 'next/navigation';
+import { uploadPaper } from '@/lib/actions/paper.actions';
+import { IPaper } from '@/lib/database/models/researchPaper.model';
 
-type Props = {
-  //userId: string;
+type PaperFormProps = {
+  userId: string;
+  paper?: IPaper;
 };
 
-const ResearchForm = (props: Props) => {
+const ResearchForm = ({ userId, paper }: PaperFormProps) => {
   const [files, setFiles] = useState<File[]>([]);
   const initialValues = researchDefaultValues;
 
+  const router = useRouter();
+  const { startUpload } = useUploadThing('paperUploader');
+
+  //1. Define your form
   const form = useForm<z.infer<typeof ResearchSchema>>({
     resolver: zodResolver(ResearchSchema),
     defaultValues: initialValues,
   });
+
+  //Define a submit handler.
+  async function onSubmit(values: z.infer<typeof ResearchSchema>) {
+    let uploadedPaperUrl = values.paperUrl;
+
+    if (files.length > 0) {
+      const uploadedPapers = await startUpload(files);
+
+      if (!uploadedPapers) {
+        return;
+      }
+
+      uploadedPaperUrl = uploadedPapers[0].url;
+    }
+
+    try {
+      const paperUpload = await uploadPaper({
+        paper: { ...values, paperUrl: uploadedPaperUrl },
+        userId,
+        path: '/dashboard',
+      });
+
+      if (paperUpload) {
+        form.reset();
+        router.push('/'); //TODO: Stripe page
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <Form {...form}>
-      <form onSubmit={() => {}} className="flex flex-col gap-5">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex flex-col gap-5"
+      >
         <div className="flex flex-col gap-5 md:flex-row">
           <FormField
             control={form.control}

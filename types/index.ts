@@ -13,3 +13,13 @@ export type UpdateUserParams = {
   username: string;
   photo: string;
 };
+
+export type uploadPaperParams = {
+  userId: string;
+  paper: {
+    title: string;
+    program: string;
+    paperUrl: string;
+  };
+  path: string;
+};

@@ -1,9 +1,12 @@
 import ResearchForm from '@/components/shared/ResearchForm';
+import { auth } from '@clerk/nextjs';
 import React from 'react';
 
-type Props = {};
+const Upload = () => {
+  const { sessionClaims } = auth();
 
-const Upload = (props: Props) => {
+  const userId = sessionClaims?.userId as string;
+
   return (
     <>
       <section className="bg-primary-50 bg-cover bg-center py-5 md:py-10">
@@ -13,7 +16,7 @@ const Upload = (props: Props) => {
       </section>
 
       <div className="wrapper my-8">
-        <ResearchForm />
+        <ResearchForm userId={userId} />
       </div>
     </>
   );
